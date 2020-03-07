@@ -1,16 +1,21 @@
+#Pygame library for games.
 import pygame
-#This allows us to use the pygame library.
 
 #Initialize the pygame window
 pygame.init()
 width = 350
 height = 200
 
-#Set the display
-pygame.display.set_mode((width, height ))
+#Set the display as variable screen.
+screen = pygame.display.set_mode((width, height ))
 
 #Set Caption
 pygame.display.set_caption("This Is A Caption")
+
+#Set Background Colour
+red = [255,0,0]
+screen.fill(red)
+pygame.display.update()
 
 #Tell the game to run
 running = True
