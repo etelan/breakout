@@ -1,5 +1,3 @@
-#TODO: Add blocks to hit with ball.
-
 #Pygame library for games.
 import pygame
 
