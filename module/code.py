@@ -18,7 +18,6 @@ white = [255,255,255]
 black = [0,0,0]
 green = [0,255,0]
 
-
 #Set our FPS and clock
 FPS = 50
 clock = pygame.time.Clock()
@@ -26,7 +25,7 @@ clock = pygame.time.Clock()
 #Paddle Class (a class is a template for an object)
 class Paddle():
     
-    #Create.
+    #Create
     #This is our contructor. Allows us to set default values.
     def __init__(self,x,y,sizex,sizey,color):
 
