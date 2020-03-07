@@ -63,7 +63,7 @@ class Paddle():
         if self.rect.right > width: # if too far right, we're out of bounds.
             print("Out of bounds")
             print(self.rect)
-            self.rect.left = width
+            self.rect.left = width - 80
         
 
 
