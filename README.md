@@ -1,5 +1,9 @@
 # breakout
 
+Code Structure
+
+
+
 INSTRUCTIONS FOR BUILDING THIS PROJECT
 Create a game similar to https://en.wikipedia.org/wiki/Breakout_(video_game)
 

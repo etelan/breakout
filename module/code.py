@@ -25,9 +25,6 @@ green = [0,255,0]
 FPS = 50
 clock = pygame.time.Clock()
 
-#Tell the game to run
-running = True
-
 #Paddle Class (a class is a template for an object)
 class Paddle():
     
@@ -69,9 +66,13 @@ class Paddle():
 
 
 #Main Loop
-myPaddle = Paddle(width/2, height - height/10, 80, 10, white)
-
             
+#Tell the game to run
+running = True
+
+#Make Paddle
+myPaddle = Paddle(width/2, height - height/10, 80, 10, white)
+           
 while(running):
     
     #User events at each frame
