@@ -1,4 +1,3 @@
-#TODO: Detect left and right keys <-
 #TODO: Add character
 #TODO: Add blocks to hit with ball.
 
@@ -30,21 +29,22 @@ while(running):
     
     #Get all the user events at each frame
     for event in pygame.event.get():
-
-        #Key presses.
-        if event.type == pygame.KEYDOWN:
-            
-            #Left
-            if event.key == pygame.K_LEFT or event.key == ord('a'):
-                print("left detected")
-            #Right
-            if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                print("right detected")
-        
         
         #If the event is a quit, quit.
         if event.type == pygame.QUIT:
             #Set running to false, as we want it to quit.
             running = False
             pygame.quit()
+
+    #Detecting Keys
+    pressedKeys = pygame.key.get_pressed()
+
+    #If statement based on keys.
+    #Left
+    if pressedKeys[pygame.K_LEFT] or pressedKeys[ord('a')]:
+        print("left detected")
+    #Right
+    if pressedKeys[pygame.K_RIGHT] or pressedKeys[ord('d')]:
+        print("right detected")
+            
     
