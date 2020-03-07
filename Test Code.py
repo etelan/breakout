@@ -9,6 +9,9 @@ height = 200
 #Set the display
 pygame.display.set_mode((width, height ))
 
+#Set Caption
+pygame.display.set_caption("This Is A Caption")
+
 #Tell the game to run
 running = True
 
