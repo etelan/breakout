@@ -1,6 +1,13 @@
 # breakout
 
-Code Structure
+Code Structure Sections
+1. Importing Libraries
+2. Setting Everything (Window size, Caption, FPS, Clock, colours)
+3. Paddle Class Set
+4. Main Loop
+ a. Create the paddle
+ b. User Events
+ c. Updating Everything (Screen, call all paddle stuff, clock tick, background colour)
 
 
 

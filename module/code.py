@@ -114,7 +114,5 @@ while(running):
     myPaddle.checkbounds() #out of bounds check
     myPaddle.draw() #draw paddle
     pygame.display.update() #update display
-
-    #Background update
     clock.tick(FPS) #this code gives us our 50FPS.
     
