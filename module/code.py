@@ -1,3 +1,6 @@
+#TODO: Add character
+#TODO: Add blocks to hit with ball.
+
 #Pygame library for games.
 import pygame
 
@@ -14,19 +17,34 @@ pygame.display.set_caption("This Is A Caption")
 
 #Set Background Colour
 red = [255,0,0]
-screen.fill(red)
+white = [255,255,255]
+screen.fill(white)
 pygame.display.update()
 
 #Tell the game to run
 running = True
 
-#While it is running, do something else.
+#Main Loop
 while(running):
+    
     #Get all the user events at each frame
     for event in pygame.event.get():
+        
         #If the event is a quit, quit.
         if event.type == pygame.QUIT:
             #Set running to false, as we want it to quit.
             running = False
             pygame.quit()
+
+    #Detecting Keys
+    pressedKeys = pygame.key.get_pressed()
+
+    #If statement based on keys.
+    #Left
+    if pressedKeys[pygame.K_LEFT] or pressedKeys[ord('a')]:
+        print("left detected")
+    #Right
+    if pressedKeys[pygame.K_RIGHT] or pressedKeys[ord('d')]:
+        print("right detected")
+            
     
