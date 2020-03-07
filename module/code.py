@@ -24,7 +24,9 @@ black = [0,0,0]
 screen.fill(black)
 pygame.display.update()
 
- 
+#Set our FPS and clock
+FPS = 60
+clock = pygame.time.Clock()
 
 #Tell the game to run
 running = True
@@ -32,18 +34,19 @@ running = True
 #Main Loop
 while(running):
     
-    #Get all the user events at each frame
+    #User events at each frame
     for event in pygame.event.get():
         
         #If the event is a quit, quit.
         if event.type == pygame.QUIT:
             #Set running to false, as we want it to quit.
             running = False
-            pygame.quit()
+            pygame.quit() #close the window
+            quit() #quit the program
 
     #Detecting Keys
     pressedKeys = pygame.key.get_pressed()
-
+    
     #If statement based on keys.
     #Left
     if pressedKeys[pygame.K_LEFT] or pressedKeys[ord('a')]:
@@ -51,5 +54,8 @@ while(running):
     #Right
     if pressedKeys[pygame.K_RIGHT] or pressedKeys[ord('d')]:
         print("right detected")
+
+    #Tick the clock
+    clock.tick(FPS) #this code gives us our 60FPS.
             
     
