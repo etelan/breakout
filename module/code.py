@@ -28,4 +28,5 @@ while(running):
         if event.type == pygame.QUIT:
             #Set running to false, as we want it to quit.
             running = False
+            pygame.quit()
     
