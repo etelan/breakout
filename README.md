@@ -1,6 +1,4 @@
 # breakout
-GOAL
-Create a game similar to the classic arcade game Breakout.
 
 INSTRUCTIONS FOR BUILDING THIS PROJECT
 Create a game similar to https://en.wikipedia.org/wiki/Breakout_(video_game)
