@@ -6,11 +6,11 @@ Code Structure Sections
 3. Paddle Class Set
 4. Main Loop
 
- a. Create the paddle
+    a. Create the paddle
 
- b. User Events
+    b. User Events
 
- c. Updating Everything (Screen, call all paddle stuff, clock tick, background colour)
+    c. Updating Everything (Screen, call all paddle stuff, clock tick, background colour)
 
 
 
