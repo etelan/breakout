@@ -23,6 +23,7 @@ green = [0,255,0]
 
 #Set our FPS and clock
 FPS = 50
+
 clock = pygame.time.Clock()
 
 #Tell the game to run
@@ -83,6 +84,7 @@ while(running):
             running = False
             pygame.quit() #close the window
             quit() #quit the program
+
     
         #Keys Released Code
         if event.type == pygame.KEYUP:
@@ -90,9 +92,11 @@ while(running):
             if event.key == (pygame.K_LEFT or ord('a')) or event.key == (pygame.K_RIGHT or ord('d')):
                 myPaddle.movement[0] = 0
 
+
     #Keys Held
     pressedKeys = pygame.key.get_pressed()
     
+
     #Keys Held Code
     #Left
     if pressedKeys[pygame.K_LEFT] or pressedKeys[ord('a')]:
@@ -101,6 +105,7 @@ while(running):
     #Right
     if pressedKeys[pygame.K_RIGHT] or pressedKeys[ord('d')]:
         print("right detected")
+
         myPaddle.movement[0] = myPaddle.speed
 
     
@@ -116,4 +121,7 @@ while(running):
 
     #Background update
     clock.tick(FPS) #this code gives us our 50FPS.
+
+            
+
     
