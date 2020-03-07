@@ -4,7 +4,7 @@
 #Pygame library for games.
 import pygame
 
-#Initialize the pygame window
+#Set the pygame window
 pygame.init()
 width = 350
 height = 200
@@ -13,13 +13,18 @@ height = 200
 screen = pygame.display.set_mode((width, height ))
 
 #Set Caption
-pygame.display.set_caption("This Is A Caption")
+pygame.display.set_caption("Breakout")
 
-#Set Background Colour
+#Set Background Colours
 red = [255,0,0]
 white = [255,255,255]
-screen.fill(white)
+black = [0,0,0]
+
+#Set our colour and update
+screen.fill(black)
 pygame.display.update()
+
+ 
 
 #Tell the game to run
 running = True
