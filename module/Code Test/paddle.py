@@ -25,8 +25,10 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
         #Get the coords
         self.rect = self.image.get_rect()
 
-    def update():
-        self.rect = self.rect.move(self.movement)
+        #Speed
+        self.movement = [0,0] #movement format shall be x,y
+        self.speed = 8 #speed of paddle
+    
         
 
     #Movement

@@ -21,6 +21,7 @@ pygame.display.set_caption("Breakout")
 paddleA = Paddle(white,100,10)
 paddleA.rect.x = 300
 paddleA.rect.y = 360
+moveleft = 0
 
 #Sprite list
 all_sprites_list = pygame.sprite.Group()
@@ -38,6 +39,8 @@ clock = pygame.time.Clock()
 #Main Loop                      
 while(running):
 
+    
+
     #Main Event Loop
     for event in pygame.event.get():
         
@@ -46,23 +49,27 @@ while(running):
             running = False
             pygame.quit() #close the window
         elif event.type == pygame.KEYDOWN:
+            print("tick down")
             if event.key ==pygame.K_l: #press L to also quit
                 running = False
                 pygame.quit() #close the window
 
 
-        #Keys Held
-        keys = pygame.key.get_pressed()
+            #start movement
+            if event.key == pygame.K_a:
+                moveleft = 1 #it is moving left
+                                
+        elif event.type == pygame.KEYUP:
+            #end movement
+            if event.key == pygame.K_a:
+                moveleft == 0 #is is not moving left
+                
     
-        #Keys Held Code
-        #Left
-        if keys[pygame.K_LEFT] or keys[ord('a')]:
-            paddleA.moveLeft(5)
+        #Movement
+        if moveleft == 1:
+            paddleA.moveLeft(5) #move left
             print("left")
-        #Right
-        if keys[pygame.K_RIGHT] or keys[ord('d')]:
-            paddleA.moveRight(5)
-            print("right")
+        
     
         
 
