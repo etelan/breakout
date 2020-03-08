@@ -3,6 +3,7 @@ BLACK = (0,0,0)
 
 #Paddle Class (a class is a template for an object)
 class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
+
     
     #Create
     #This is our contructor. Allows us to set default values.
@@ -24,8 +25,19 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
         #Get the coords
         self.rect = self.image.get_rect()
 
-        #Movement
+    #Movement
+    def moveLeft(self,pixels):
+        self.rect.x -= pixels
+        #Out of bounds
+        if self.rect.x < 0:
+            self.rect.x = 0
 
+    def moveRight(self,pixels):
+        self.rect.x += pixels
+        if self.rect.x > 600 - 100:
+            self.rect.x = 600 - 100
+        
+            
 
 
     

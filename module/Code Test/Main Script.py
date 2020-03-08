@@ -18,7 +18,7 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Breakout")
 
 #Make Paddle
-paddleA = Paddle(white,10,100)
+paddleA = Paddle(white,100,10)
 paddleA.rect.x = 300
 paddleA.rect.y = 360
 
@@ -50,12 +50,28 @@ while(running):
                 running = False
                 pygame.quit() #close the window
 
+
+        #Keys Held
+        pressedKeys = pygame.key.get_pressed()
+    
+        #Keys Held Code
+        #Left
+        if pressedKeys[pygame.K_LEFT] or pressedKeys[ord('a')]:
+            print("left detected")
+            paddleA.moveLeft(5)
+        #Right
+        if pressedKeys[pygame.K_RIGHT] or pressedKeys[ord('d')]:
+            print("right detected")
+            paddleA.moveRight(5)
+    
+        
+
     #Game Logic
     all_sprites_list.update()
     
 
     #Drawing
-    screen.fill(green) #Background
+    screen.fill(black) #Background
     all_sprites_list.draw(screen) #Sprites
     
     
