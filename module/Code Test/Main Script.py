@@ -1,115 +1,65 @@
 #Pygame library for games.
 import pygame
+from paddle import Paddle
 
-#Set the pygame window
+#Initialise Game Engine
 pygame.init()
-width = 600
-height = 400
 
-#Set the display as variable screen.
-screen = pygame.display.set_mode((width, height))
-
-#Set Caption
-pygame.display.set_caption("Breakout")
-
-#Set Background Colours
+#Set Colours
 red = [255,0,0]
 white = [255,255,255]
 black = [0,0,0]
 green = [0,255,0]
 
-#Set our FPS and clock
-FPS = 50
-clock = pygame.time.Clock()
+#Set the pygame window
+width = 600
+height = 400
+screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption("Breakout")
 
-#Paddle Class (a class is a template for an object)
-class Paddle():
-    
-    #Create
-    #This is our contructor. Allows us to set default values.
-    def __init__(self,x,y,sizex,sizey,color):
+#Make Paddle
+paddleA = Paddle(white,10,100)
+paddleA.rect.x = 300
+paddleA.rect.y = 360
 
-        #Now we create our paddle.
-        self.image = pygame.Surface((sizex,sizey), pygame.SRCALPHA, 32) #Blank rectangle. Per-Pixel Alpha. 32 Depth.
-        self.rect = self.image.get_rect() #gets the rectangular coordinates
-        self.rect.left = x #set x
-        self.rect.top = y #set y
+#Sprite list
+all_sprites_list = pygame.sprite.Group()
 
-        self.image.fill(white) #fill with white
+#Add our sprites to the list
+all_sprites_list.add(paddleA)
 
-        self.movement = [0,0] #this sets the format for us. [x,y]
-        self.speed = 8 #The speed of the paddle. pixels/frame
-
-    #Draw
-    def draw(self): 
-        screen.blit(self.image, self.rect) #draws paddle on screen.
-
-    #Step
-    def update(self):
-        self.rect = self.rect.move(self.movement) #sets coords to the movement.
-
-    #Outside Room
-    def checkbounds(self): #are we out of boudns?
-        if self.rect.left < 0: #if we are too far left, we're out of bounds.
-            print("Out of bounds")
-            print(self.rect)
-            self.rect.left = 0 #set to 0 if below 0
-        if self.rect.right > width: # if too far right, we're out of bounds.
-            print("Out of bounds")
-            print(self.rect)
-            self.rect.left = width - 80
-        
-
-
-
-#Main Loop
-            
 #Tell the game to run
 running = True
 
-#Make Paddle
-myPaddle = Paddle(width/2, height - height/10, 80, 10, white)
-           
+#Set our clock
+
+clock = pygame.time.Clock()       
+
+#Main Loop                      
 while(running):
-    
-    #User events at each frame
+
+    #Main Event Loop
     for event in pygame.event.get():
         
         #Quit.
-        if event.type == pygame.QUIT:
-            #Set running to false, as we want it to quit.
+        if event.type == pygame.QUIT: #press quit button
             running = False
             pygame.quit() #close the window
-            quit() #quit the program
-    
-        #Keys Released Code
-        if event.type == pygame.KEYUP:
-            # if (left) or (right) are released
-            if event.key == (pygame.K_LEFT or ord('a')) or event.key == (pygame.K_RIGHT or ord('d')):
-                myPaddle.movement[0] = 0
+        elif event.type == pygame.KEYDOWN:
+            if event.key ==pygame.K_l: #press L to also quit
+                running = False
+                pygame.quit() #close the window
 
-    #Keys Held
-    pressedKeys = pygame.key.get_pressed()
-    
-    #Keys Held Code
-    #Left
-    if pressedKeys[pygame.K_LEFT] or pressedKeys[ord('a')]:
-        print("left detected")
-        myPaddle.movement[0] = -1*myPaddle.speed
-    #Right
-    if pressedKeys[pygame.K_RIGHT] or pressedKeys[ord('d')]:
-        print("right detected")
-        myPaddle.movement[0] = myPaddle.speed
-
+    #Game Logic
+    all_sprites_list.update()
     
 
-    #the background
-    screen.fill(green)
+    #Drawing
+    screen.fill(green) #Background
+    all_sprites_list.draw(screen) #Sprites
+    
     
     #always update everything
-    myPaddle.update() #update paddle
-    myPaddle.checkbounds() #out of bounds check
-    myPaddle.draw() #draw paddle
-    pygame.display.update() #update display
-    clock.tick(FPS) #this code gives us our 50FPS.
+    pygame.display.flip() #update display
+    clock.tick(60) #this code gives us our 60FPS.
     
