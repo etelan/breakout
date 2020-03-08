@@ -1,11 +1,8 @@
 import pygame
 BLACK = (0,0,0)
 
-#TODO: checkbounds needs to be dynamic width
-
 #Paddle Class (a class is a template for an object)
 class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
-
     
     #Create
     #This is our contructor. Allows us to set default values.
@@ -29,7 +26,7 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
 
         #Speed
         self.movement = [0,0] #movement format shall be x,y
-        self.speed = 8 #speed of paddle
+        self.speed = 4 #speed of paddle
 
     def update(self):
         self.rect = self.rect.move(self.movement) #sets coords to the movement.
@@ -47,8 +44,6 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
         
 
 
-        
-            
 
 
     

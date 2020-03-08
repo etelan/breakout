@@ -1,6 +1,10 @@
+#TODO: Wall collisions need to be dynamic
+#TODO: Bounce, ball.py, needs to be dynamic
+
 #Pygame library for games.
 import pygame
 from paddle import Paddle
+from ball import Ball
 
 #Initialise Game Engine
 pygame.init()
@@ -21,13 +25,18 @@ pygame.display.set_caption("Breakout")
 paddleA = Paddle(white,100,10)
 paddleA.rect.x = 300
 paddleA.rect.y = 360
-moveleft = 0
+
+#Make Ball
+ball = Ball(white, 10, 10)
+ball.rect.x = 300
+ball.rect.y = 300
 
 #Sprite list
 all_sprites_list = pygame.sprite.Group()
 
 #Add our sprites to the list
 all_sprites_list.add(paddleA)
+all_sprites_list.add(ball)
 
 #Tell the game to run
 running = True
@@ -54,7 +63,7 @@ while(running):
                 pygame.quit() #close the window
 
 
-            #start movement
+            #Start Paddle movement
             if event.key == pygame.K_a:
                 paddleA.movement[0] = -1*paddleA.speed #it is moving left
             if event.key == pygame.K_d:
@@ -62,7 +71,7 @@ while(running):
 
                                 
         elif event.type == pygame.KEYUP:
-            #end movement
+            #End Paddle movement
             if event.key == pygame.K_a:
                 paddleA.movement[0] = 0 #is is not moving left
             if event.key == pygame.K_d:
@@ -74,6 +83,20 @@ while(running):
 
     #Game Logic
     all_sprites_list.update()
+
+    #Bounce Against Walls
+    if ball.rect.x>=(width + 5):
+        ball.velocity[0] = -ball.velocity[0]
+    if ball.rect.x<=0:
+        ball.velocity[0] = -ball.velocity[0]
+    if ball.rect.y>height:
+        ball.velocity[1] = -ball.velocity[1]
+    if ball.rect.y<5:
+        ball.velocity[1] = -ball.velocity[1]
+        
+    #Bounce against the paddles
+    if pygame.sprite.collide_mask(ball, paddleA):
+      ball.bounce()
     
 
     #Drawing
