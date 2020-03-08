@@ -24,6 +24,8 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
         #Get the coords
         self.rect = self.image.get_rect()
 
+        #Movement
+
 
 
     
