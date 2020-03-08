@@ -33,12 +33,8 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
 
     def checkbounds(self): #are we out of boudns?
         if self.rect.left < 0: #if we are too far left, we're out of bounds.
-            print("Out of bounds")
-            print(self.rect)
             self.rect.x = 0 #set to 0 if below 0
         if self.rect.right > 600: # if too far right, we're out of bounds.
-            print("Out of bounds")
-            print(self.rect)
             self.rect.x = 600 - 100
         
         

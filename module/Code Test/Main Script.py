@@ -64,9 +64,10 @@ while(running):
 
 
             #Start Paddle movement
+            
             if event.key == pygame.K_a:
                 paddleA.movement[0] = -1*paddleA.speed #it is moving left
-            if event.key == pygame.K_d:
+            elif event.key == pygame.K_d:
                 paddleA.movement[0] = 1*paddleA.speed #it is moving right
 
                                 
@@ -79,6 +80,7 @@ while(running):
             
         
     
+    #Stop moving
         
 
     #Game Logic
