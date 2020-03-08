@@ -13,16 +13,16 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
 
 
         #Now we create our paddle.
-        self.image = pygame.Surface((width,height)) 
-        self.image.fill(BLACK)
-        self.image.set_colorkey(BLACK)
+        self.image = pygame.Surface((width,height))  #Creates box image
+        self.image.fill(BLACK) #Fills background box
+        self.image.set_colorkey(BLACK) #Transparent Background
 
 
         #drawing the paddle
-        pygame.draw.rect(self.image, colour, [0,0, width, height])
+        pygame.draw.rect(self.image, colour, [0,0, width, height]) 
 
         #Get the coords
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect() 
 
         #Speed
         self.movement = [0,0] #movement format shall be x,y
@@ -34,8 +34,8 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
     def checkbounds(self): #are we out of boudns?
         if self.rect.left < 0: #if we are too far left, we're out of bounds.
             self.rect.x = 0 #set to 0 if below 0
-        if self.rect.right > 600: # if too far right, we're out of bounds.
-            self.rect.x = 600 - 100
+        if self.rect.right > 800: # if too far right, we're out of bounds.
+            self.rect.x = 800 - 100
         
         
 
