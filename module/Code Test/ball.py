@@ -33,6 +33,7 @@ class Ball(pygame.sprite.Sprite): #new classed based on sprite class
         self.rect.y += self.velocity[1]
 
     def bounce(self):
+        self.rect.y -= 10
         self.velocity[0] = self.velocity[0] #horizontal bounces equally
         self.velocity[1] = -self.velocity[1] #vertical bounces randomly
         

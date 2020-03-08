@@ -13,7 +13,7 @@ class Brick(pygame.sprite.Sprite): #class based on sprite class
         #Make the brick
         self.image = pygame.Surface((width, height))
         self.image.fill(black)
-        self.image.set_colourkey(Black)
+        #self.image.set_colourkey(black)
 
         #Draw the brick
         pygame.draw.rect(self.image, colour, [0,0,width,height])

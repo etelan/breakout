@@ -16,6 +16,10 @@ white = [255,255,255]
 black = [0,0,0]
 green = [0,255,0]
 
+#score and lives
+score = 0
+lives = 3
+
 #Set the pygame window
 width = 800
 height = 600
@@ -34,10 +38,29 @@ paddleA.rect.y = 540
 #Make Ball
 ball = Ball(white, 10, 10)
 ball.rect.x = 300
-ball.rect.y = 300
+ball.rect.y = 500
 
 #Sprite list
 all_sprites_list = pygame.sprite.Group()
+
+#Make Bricks
+all_bricks = pygame.sprite.Group()
+
+rows = 8
+bricks = 8
+row_gap = 20
+
+for i in range(rows - 1): #rows
+    row_gap += 40
+    for i in range(bricks - 1):
+        brick = Brick(red,80,30)
+        brick.rect.x = 60 + i*100 #this spaces them out along a line
+        brick.rect.y = row_gap
+        all_sprites_list.add(brick)
+        all_bricks.add(brick)
+    
+
+
 
 #Add our sprites to the list
 all_sprites_list.add(paddleA)
@@ -111,6 +134,13 @@ while(running):
     #Bounce against the paddles
     if pygame.sprite.collide_mask(ball, paddleA):
       ball.bounce()
+
+    #Bounce against bricks
+    brick_current_collides = pygame.sprite.spritecollide(ball,all_bricks,False)
+    for brick in brick_current_collides:
+        score += 1
+        brick.kill()
+        ball.bounce()
     
 
     #Drawing
