@@ -1,10 +1,11 @@
 #TODO: Wall collisions need to be dynamic
 #TODO: Bounce, ball.py, needs to be dynamic
 
-#Pygame library for games.
+#Imports.
 import pygame
 from paddle import Paddle
 from ball import Ball
+from brick import Brick
 
 #Initialise Game Engine
 pygame.init()
@@ -16,8 +17,8 @@ black = [0,0,0]
 green = [0,255,0]
 
 #Set the pygame window
-width = 600
-height = 400
+width = 800
+height = 600
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Breakout")
 
@@ -28,7 +29,7 @@ ddown = 0
 #Make Paddle
 paddleA = Paddle(white,100,10)
 paddleA.rect.x = 300
-paddleA.rect.y = 360
+paddleA.rect.y = 540
 
 #Make Ball
 ball = Ball(white, 10, 10)
