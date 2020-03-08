@@ -21,6 +21,10 @@ height = 400
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Breakout")
 
+#Keys down
+adown = 0
+ddown = 0
+
 #Make Paddle
 paddleA = Paddle(white,100,10)
 paddleA.rect.x = 300
@@ -46,17 +50,17 @@ running = True
 clock = pygame.time.Clock()       
 
 #Main Loop                      
-while(running):
-
-    
+while(running): 
 
     #Main Event Loop
     for event in pygame.event.get():
         
-        #Quit.
+        #Quit Event
         if event.type == pygame.QUIT: #press quit button
             running = False
             pygame.quit() #close the window
+
+        #Key Down Event
         elif event.type == pygame.KEYDOWN:
             if event.key ==pygame.K_l: #press L to also quit
                 running = False
@@ -64,24 +68,31 @@ while(running):
 
 
             #Start Paddle movement
-            
             if event.key == pygame.K_a:
-                paddleA.movement[0] = -1*paddleA.speed #it is moving left
+                adown = 1 #A key is down
             elif event.key == pygame.K_d:
-                paddleA.movement[0] = 1*paddleA.speed #it is moving right
+                ddown = 1 #D key is down
 
-                                
+        #Key Up Event                        
         elif event.type == pygame.KEYUP:
             #End Paddle movement
             if event.key == pygame.K_a:
-                paddleA.movement[0] = 0 #is is not moving left
+                adown = 0 #A key is up
             if event.key == pygame.K_d:
-                paddleA.movement[0] = 0 #is is not moving right
+                ddown = 0 #D key is up
             
         
     
-    #Stop moving
-        
+    #Movement Code Paddle
+    if adown == 1:
+        paddleA.movement[0] = -1*paddleA.speed #it is moving left
+    if ddown == 1:
+        paddleA.movement[0] = 1*paddleA.speed #it is moving right
+    
+    #Stopping code Padde
+    if (adown == 0) and (ddown == 0):
+        print("Nothing is down")
+        paddleA.movement[0] = 0
 
     #Game Logic
     all_sprites_list.update()

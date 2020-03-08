@@ -13,16 +13,16 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
 
 
         #Now we create our paddle.
-        self.image = pygame.Surface((width,height)) 
-        self.image.fill(BLACK)
-        self.image.set_colorkey(BLACK)
+        self.image = pygame.Surface((width,height))  #Creates box image
+        self.image.fill(BLACK) #Fills background box
+        self.image.set_colorkey(BLACK) #Transparent Background
 
 
         #drawing the paddle
-        pygame.draw.rect(self.image, colour, [0,0, width, height])
+        pygame.draw.rect(self.image, colour, [0,0, width, height]) 
 
         #Get the coords
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect() 
 
         #Speed
         self.movement = [0,0] #movement format shall be x,y
