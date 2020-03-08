@@ -25,12 +25,17 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
         #Get the coords
         self.rect = self.image.get_rect()
 
+    def update():
+        self.rect = self.rect.move(self.movement)
+        
+
     #Movement
     def moveLeft(self,pixels):
         self.rect.x -= pixels
         #Out of bounds
         if self.rect.x < 0:
             self.rect.x = 0
+            print("bringing you home")
 
     def moveRight(self,pixels):
         self.rect.x += pixels

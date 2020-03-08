@@ -52,17 +52,17 @@ while(running):
 
 
         #Keys Held
-        pressedKeys = pygame.key.get_pressed()
+        keys = pygame.key.get_pressed()
     
         #Keys Held Code
         #Left
-        if pressedKeys[pygame.K_LEFT] or pressedKeys[ord('a')]:
-            print("left detected")
+        if keys[pygame.K_LEFT] or keys[ord('a')]:
             paddleA.moveLeft(5)
+            print("left")
         #Right
-        if pressedKeys[pygame.K_RIGHT] or pressedKeys[ord('d')]:
-            print("right detected")
+        if keys[pygame.K_RIGHT] or keys[ord('d')]:
             paddleA.moveRight(5)
+            print("right")
     
         
 
