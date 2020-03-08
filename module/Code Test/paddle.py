@@ -1,8 +1,11 @@
 import pygame
 BLACK = (0,0,0)
 
+#TODO: checkbounds needs to be dynamic width
+
 #Paddle Class (a class is a template for an object)
 class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
+
     
     #Create
     #This is our contructor. Allows us to set default values.
@@ -24,6 +27,28 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
         #Get the coords
         self.rect = self.image.get_rect()
 
+        #Speed
+        self.movement = [0,0] #movement format shall be x,y
+        self.speed = 8 #speed of paddle
+
+    def update(self):
+        self.rect = self.rect.move(self.movement) #sets coords to the movement.
+
+    def checkbounds(self): #are we out of boudns?
+        if self.rect.left < 0: #if we are too far left, we're out of bounds.
+            print("Out of bounds")
+            print(self.rect)
+            self.rect.x = 0 #set to 0 if below 0
+        if self.rect.right > 600: # if too far right, we're out of bounds.
+            print("Out of bounds")
+            print(self.rect)
+            self.rect.x = 600 - 100
+        
+        
+
+
+        
+            
 
 
     

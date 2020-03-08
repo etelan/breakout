@@ -18,9 +18,10 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Breakout")
 
 #Make Paddle
-paddleA = Paddle(white,10,100)
+paddleA = Paddle(white,100,10)
 paddleA.rect.x = 300
 paddleA.rect.y = 360
+moveleft = 0
 
 #Sprite list
 all_sprites_list = pygame.sprite.Group()
@@ -38,6 +39,8 @@ clock = pygame.time.Clock()
 #Main Loop                      
 while(running):
 
+    
+
     #Main Event Loop
     for event in pygame.event.get():
         
@@ -50,16 +53,37 @@ while(running):
                 running = False
                 pygame.quit() #close the window
 
+
+            #start movement
+            if event.key == pygame.K_a:
+                paddleA.movement[0] = -1*paddleA.speed #it is moving left
+            if event.key == pygame.K_d:
+                paddleA.movement[0] = 1*paddleA.speed #it is moving right
+
+                                
+        elif event.type == pygame.KEYUP:
+            #end movement
+            if event.key == pygame.K_a:
+                paddleA.movement[0] = 0 #is is not moving left
+            if event.key == pygame.K_d:
+                paddleA.movement[0] = 0 #is is not moving right
+            
+        
+    
+        
+
     #Game Logic
     all_sprites_list.update()
     
 
     #Drawing
-    screen.fill(green) #Background
+    screen.fill(black) #Background
     all_sprites_list.draw(screen) #Sprites
     
     
     #always update everything
+    paddleA.update()
+    paddleA.checkbounds()
     pygame.display.flip() #update display
     clock.tick(60) #this code gives us our 60FPS.
     
