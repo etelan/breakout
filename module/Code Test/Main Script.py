@@ -49,7 +49,6 @@ while(running):
             running = False
             pygame.quit() #close the window
         elif event.type == pygame.KEYDOWN:
-            print("tick down")
             if event.key ==pygame.K_l: #press L to also quit
                 running = False
                 pygame.quit() #close the window
@@ -57,18 +56,18 @@ while(running):
 
             #start movement
             if event.key == pygame.K_a:
-                moveleft = 1 #it is moving left
+                paddleA.movement[0] = -1*paddleA.speed #it is moving left
+            if event.key == pygame.K_d:
+                paddleA.movement[0] = 1*paddleA.speed #it is moving right
+
                                 
         elif event.type == pygame.KEYUP:
             #end movement
             if event.key == pygame.K_a:
-                moveleft == 0 #is is not moving left
-                
-    
-        #Movement
-        if moveleft == 1:
-            paddleA.moveLeft(5) #move left
-            print("left")
+                paddleA.movement[0] = 0 #is is not moving left
+            if event.key == pygame.K_d:
+                paddleA.movement[0] = 0 #is is not moving right
+            
         
     
         
@@ -83,6 +82,8 @@ while(running):
     
     
     #always update everything
+    paddleA.update()
+    paddleA.checkbounds()
     pygame.display.flip() #update display
     clock.tick(60) #this code gives us our 60FPS.
     
