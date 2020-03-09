@@ -40,7 +40,6 @@ def main():
     E = "Etrim.wav"
     C = "Ctrim.wav"
 
-
     #Set Colours
     red = [255,0,0]
     white = [255,255,255]
@@ -57,6 +56,15 @@ def main():
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Breakout")
 
+#RUNNING VARIABLES
+    
+    #Set our clock
+    clock = pygame.time.Clock()
+
+    #Tell the game to run
+    running = True
+
+#KEY CHECKERS
     #Keys down
     adown = 0
     ddown = 0
@@ -97,14 +105,6 @@ def main():
     #Add our sprites to the list
     all_sprites_list.add(paddleA)
     all_sprites_list.add(ball)
-
-#RUNNING VARIABLES
-
-    #Tell the game to run
-    running = True
-
-    #Set our clock
-    clock = pygame.time.Clock()
 
 
 #USER EVENTS
