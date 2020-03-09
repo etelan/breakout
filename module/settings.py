@@ -69,18 +69,18 @@ def main():
         #Title Draw
         font = pygame.font.Font(None, 74)
         text = font.render("MAIN MENU", 1, white) 
-        screen.blit(text, (250,50))
+        screen.blit(text, (210,50))
 
 
         #Explain1 Draw
         font = pygame.font.Font(None, 25)
         text = font.render("Press 'Space' on 'Save' to save.", 1, white) 
-        screen.blit(text, (250,295))
+        screen.blit(text, (210,295))
 
         #Explain2 Draw
         font = pygame.font.Font(None, 25)
         text = font.render("To change a value, use keys 'A' and 'D'.", 1, white) 
-        screen.blit(text, (250,335))
+        screen.blit(text, (210,335))
 
         #Explain3 Draw
         font = pygame.font.Font(None, 25)

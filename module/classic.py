@@ -154,11 +154,13 @@ def main():
         all_sprites_list.update()
 
         #Bounce Against Walls
-        if ball.rect.x>=(width - 5): #Right Wall
+        if ball.rect.y<5: #Upper Wall
+            ball.velocity[1] = -ball.velocity[1]
+        elif ball.rect.x>=(width - 5): #Right Wall
             ball.velocity[0] = -ball.velocity[0]
-        if ball.rect.x<=0: #Left Wall
+        elif ball.rect.x<=0: #Left Wall
             ball.velocity[0] = -ball.velocity[0]
-        if ball.rect.y>height: #Wall behind paddle
+        elif ball.rect.y>height: #Wall behind paddle
             ball.velocity[1] = -ball.velocity[1]
             lives -= 1
             if lives <= 0: #If out of lives
@@ -188,8 +190,7 @@ def main():
                 #Back To Main Menu
                 running = False 
             
-        if ball.rect.y<5:
-            ball.velocity[1] = -ball.velocity[1]
+        
             
         #Bounce against the paddles
         if pygame.sprite.collide_mask(ball, paddleA):
