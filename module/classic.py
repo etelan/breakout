@@ -10,7 +10,27 @@ def main():
     from ball import Ball
     from brick import Brick
 
-    print("Initialize")
+    #Read Settings
+    #The Settings
+    try: #Read The settings
+        f = open("settings.txt", "r")
+        lines=f.readlines()
+        #Set the variables
+        paddle_speed = int(lines[1])
+        sound = int(lines[3])
+        #Close the file
+        f.close()
+        
+    #No File    
+    except FileNotFoundError: #If there is no file, then we will have to make one.
+        f = open("settings.txt", "w+")
+        #Default Values
+        f.write("[Paddle Speed]\n4" )
+        f.write("\n[Sound]\0" )
+        paddle_speed = int(4)
+        sound = 0
+        #Close the file
+        f.close()
 
     #Initialise Game Engine
     pygame.init()
@@ -44,7 +64,7 @@ def main():
     ddown = 0
 
     #Make Paddle
-    paddleA = Paddle(white,100,10)
+    paddleA = Paddle(white,100,10, paddle_speed)
     paddleA.rect.x = 300
     paddleA.rect.y = 540
 
@@ -60,12 +80,12 @@ def main():
     all_bricks = pygame.sprite.Group()
 
     rows = 8
-    bricks = 8
+    bricks = 7
     row_gap = 20
 
-    for i in range(rows - 1): #rows
+    for i in range(rows): #rows
         row_gap += 40
-        for i in range(bricks - 1):
+        for i in range(bricks):
             brick = Brick(red,80,30)
             brick.rect.x = 60 + i*100 #this spaces them out along a line
             brick.rect.y = row_gap

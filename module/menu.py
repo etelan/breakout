@@ -3,10 +3,11 @@ def main():
 
     #Import
     import pygame
-    from cursor import Cursor
+    from cursor_menu import Cursor
 
     #The Menu Elements
     import classic #Classic game
+    import settings #settings screen
     
     
     pygame.init() #initialize
@@ -47,7 +48,7 @@ def main():
             
         #Title Draw
         font = pygame.font.Font(None, 74)
-        text = font.render("MAIN MENU", 1, white) # LINE ONE
+        text = font.render("MAIN MENU", 1, white)
         screen.blit(text, (250,50))
 
         
@@ -56,10 +57,10 @@ def main():
         text = font.render("Classic Game", 1, white) # LINE ONE
         screen.blit(text, (250,175))
 
-        text = font.render("Game With Extras", 1, white) # LINE ONE
+        text = font.render("Game With Extras", 1, white) # LINE TWO
         screen.blit(text, (250,215))
 
-        text = font.render("Settings", 1, white) # LINE ONE
+        text = font.render("Settings", 1, white) # LINE THREE
         screen.blit(text, (250,255))
         
         pygame.display.flip()#update
@@ -81,8 +82,8 @@ def main():
                         cursor.rect.y -= 40
                     
                 if event.key ==pygame.K_SPACE:
-                    if cursor.rect.y == 262:
-                        print("Not Done Yet")
+                    if cursor.rect.y == 262: # Settings
+                        settings.main()
                     elif cursor.rect.y == 222:
                         print("Not Done Yet")
                     elif cursor.rect.y == 182:

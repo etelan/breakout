@@ -6,7 +6,7 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
     
     #Create
     #This is our contructor. Allows us to set default values.
-    def __init__(self, colour, width, height):
+    def __init__(self, colour, width, height, speed):
 
         #Sprite Constructor (parent contructor)
         super().__init__()
@@ -26,7 +26,7 @@ class Paddle(pygame.sprite.Sprite): #Tells python this is a sprite class.
 
         #Speed
         self.movement = [0,0] #movement format shall be x,y
-        self.speed = 4 #speed of paddle
+        self.speed = speed #speed of paddle
 
     def update(self):
         self.rect = self.rect.move(self.movement) #sets coords to the movement.
