@@ -31,7 +31,7 @@ def main():
 
     #score and lives
     score = 0
-    lives = 3
+    lives = 5
 
     #Set the pygame window
     width = 800
@@ -134,15 +134,15 @@ def main():
         all_sprites_list.update()
 
         #Bounce Against Walls
-        if ball.rect.x>=(width + 5):
+        if ball.rect.x>=(width - 5): #Right Wall
             ball.velocity[0] = -ball.velocity[0]
-        if ball.rect.x<=0:
+        if ball.rect.x<=0: #Left Wall
             ball.velocity[0] = -ball.velocity[0]
-        if ball.rect.y>height:
+        if ball.rect.y>height: #Wall behind paddle
             ball.velocity[1] = -ball.velocity[1]
             lives -= 1
             print(lives)
-            if lives <= 0:
+            if lives <= 0: #If out of lives
                 font = pygame.font.Font(None, 74)
                 text = font.render("YOU LOSE", 1, white) # game over
                 screen.blit(text, (250,300))
@@ -151,7 +151,6 @@ def main():
                 screen.blit(text, (250,400)) #draw points
                 pygame.display.flip()
                 pygame.time.wait(3000)
-                
                 running = False #quit the game
             
         if ball.rect.y<5:

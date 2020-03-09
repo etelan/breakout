@@ -23,7 +23,7 @@ class Ball(pygame.sprite.Sprite): #new classed based on sprite class
         pygame.draw.rect(self.image, colour, [0, 0, width, height]) #draws our rectangle ball
 
         #Because it has displacement, not just distance, we need velocity[x,y] with a random starting speed
-        self.velocity = [randint(4,8), randint(-8,8)]
+        self.velocity = [randint(-8,8), randint(-8,-1)]
 
         #Grab dimensions of ball
         self.rect = self.image.get_rect()
@@ -34,7 +34,7 @@ class Ball(pygame.sprite.Sprite): #new classed based on sprite class
 
     def bounce(self):
         self.velocity[0] = self.velocity[0] #horizontal bounces equally
-        self.velocity[1] = -self.velocity[1] #vertical bounces randomly
+        self.velocity[1] = -self.velocity[1] #vertical bounces equally
         
 
         
