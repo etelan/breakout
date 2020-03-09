@@ -1,11 +1,13 @@
 # breakout
 
-INSTRUCTIONS FOR PLAYING
+INSTRUCTIONS FOR RUNNING
+
 Double click the shortcut, or double click /module/BREAKOUT.py.
 
 
 
 INSTRUCTIONS FOR BUILDING THIS PROJECT
+
 Create a game similar to https://en.wikipedia.org/wiki/Breakout_(video_game)
 
 ● Your game should have a single screen with 8 rows of bricks, a paddle, and a ball.
