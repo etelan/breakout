@@ -3,14 +3,14 @@
 
 def main():
 
-    #Imports.
+#IMPORTING
     import pygame
     from pygame import mixer
     from paddle import Paddle
     from ball import Ball
     from brick import Brick
 
-    #Read Settings
+#FILE HANDLING
     #The Settings
     try: #Read The settings
         f = open("settings.txt", "r")
@@ -31,6 +31,8 @@ def main():
         sound = 0
         #Close the file
         f.close()
+
+#INITIALIZE
 
     #Initialise Game Engine
     pygame.init()
@@ -62,6 +64,8 @@ def main():
     adown = 0
     ddown = 0
 
+#CREATE OBJECTS
+
     #Make Paddle
     paddleA = Paddle(white,100,10, paddle_speed)
     paddleA.rect.x = 300
@@ -92,19 +96,21 @@ def main():
             brick.rect.y = row_gap
             all_sprites_list.add(brick)
             all_bricks.add(brick)
-        
-
-
 
     #Add our sprites to the list
     all_sprites_list.add(paddleA)
     all_sprites_list.add(ball)
 
+#RUNNING VARIABLES
+
     #Tell the game to run
     running = True
 
     #Set our clock
-    clock = pygame.time.Clock()       
+    clock = pygame.time.Clock()
+
+
+#USER EVENTS
 
     #Main Loop                      
     while(running): 
@@ -146,13 +152,15 @@ def main():
         if ddown == 1:
             paddleA.movement[0] = 1*paddleA.speed #it is moving right
         
-        #Stopping code Padde
+        #Stopping code Paddle
         if (adown == 0) and (ddown == 0):
             paddleA.movement[0] = 0
 
         #Game Logic
         all_sprites_list.update()
 
+#BOUNCING
+        
         #Bounce Against Walls
         if ball.rect.y<5: #Upper Wall
             ball.velocity[1] = -ball.velocity[1]
@@ -164,7 +172,9 @@ def main():
             ball.velocity[1] = -ball.velocity[1]
             lives -= 1
             if lives <= 0: #If out of lives
-                 #update display for lives in the corner
+                #update display for lives in the corner
+                lives = 0
+                print("Stop Running")
 
                 #Game Over
                 font = pygame.font.Font(None, 74) 
@@ -176,6 +186,9 @@ def main():
                 text = font.render("Points: " + str(score), 1, white)
                 screen.blit(text, (250,400))
 
+                #Lives Clear
+                text = font.render("Lives 1", 1, black)
+                screen.blit(text, (650, 10)) #draw lives
 
                 #Lives (same font as before)
                 text = font.render("Lives 0", 1, white)
@@ -219,6 +232,8 @@ def main():
             #Mecahnics
             brick.kill()
             ball.bounce()
+
+            #Win Conditions
             if len(all_bricks)==0: #If there are no bricks left, you win
                 font = pygame.font.Font(None, 65)
                 text = font.render("YOU WIN", 1, white)
@@ -226,8 +241,9 @@ def main():
                 pygame.display.flip()
                 pygame.time.wait(3000)
                 running = 0  #stop the game
+                
+#DRAWING
         
-
         #Drawing
         screen.fill(black) #Background
         all_sprites_list.draw(screen) #Sprites
@@ -239,6 +255,7 @@ def main():
         text = font.render("Lives " + str(lives), 1, white)
         screen.blit(text, (650, 10)) #draw lives
         
+#UPDATES
         
         #always update everything
         paddleA.update()
