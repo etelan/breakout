@@ -1,4 +1,4 @@
 [Paddle Speed]
-4
+10
 [Sound]
-0
+1

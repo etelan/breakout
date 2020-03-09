@@ -37,10 +37,9 @@ def main():
 
     #Initialize sound
     mixer.init()
-    import os
-    current_path = os.getcwd() #Get default Path
-    c_note = current_path + "\\Ctrim.wav" #C Note
-    e_note = current_path + "\\Etrim.wav" #E Note
+    #Notes
+    E = "Etrim.wav"
+    C = "Ctrim.wav"
 
 
     #Set Colours
@@ -76,9 +75,11 @@ def main():
     #Sprite list
     all_sprites_list = pygame.sprite.Group()
 
-    #Make Bricks
+    #Make Bricks Group
     all_bricks = pygame.sprite.Group()
 
+    
+    #Lay Bricks
     rows = 8
     bricks = 7
     row_gap = 20
@@ -103,7 +104,6 @@ def main():
     running = True
 
     #Set our clock
-
     clock = pygame.time.Clock()       
 
     #Main Loop                      
@@ -114,7 +114,7 @@ def main():
             
             #Quit Event
             if event.type == pygame.QUIT: #press quit button
-                running = False
+                pygame.quit() #close the window
                 
 
             #Key Down Event
@@ -161,17 +161,32 @@ def main():
         if ball.rect.y>height: #Wall behind paddle
             ball.velocity[1] = -ball.velocity[1]
             lives -= 1
-            print(lives)
             if lives <= 0: #If out of lives
-                font = pygame.font.Font(None, 74)
-                text = font.render("YOU LOSE", 1, white) # game over
+                 #update display for lives in the corner
+
+                #Game Over
+                font = pygame.font.Font(None, 74) 
+                text = font.render("YOU LOSE", 1, white)
                 screen.blit(text, (250,300))
+
+                #Points
                 font = pygame.font.Font(None, 34)
-                text = font.render("Points: " + str(score), 1, white) # Points
-                screen.blit(text, (250,400)) #draw points
-                pygame.display.flip()
+                text = font.render("Points: " + str(score), 1, white)
+                screen.blit(text, (250,400))
+
+
+                #Lives (same font as before)
+                text = font.render("Lives 0", 1, white)
+                screen.blit(text, (650, 10)) #draw lives
+
+                #Update screen
+                pygame.display.update()
+
+                #Pause for effect...
                 pygame.time.wait(3000)
-                running = False #quit the game
+
+                #Back To Main Menu
+                running = False 
             
         if ball.rect.y<5:
             ball.velocity[1] = -ball.velocity[1]
@@ -179,10 +194,10 @@ def main():
         #Bounce against the paddles
         if pygame.sprite.collide_mask(ball, paddleA):
             #Sound
-            mixer.music.stop()
-            mixer.music.load("Ctrim.wav")
-            mixer.music.play()
-
+            if sound == 1: #if sound is enabled
+                mixer.music.stop()
+                mixer.music.load(C)
+                mixer.music.play()
             #Movement
             ball.rect.y -= 10
             ball.bounce()
@@ -190,10 +205,12 @@ def main():
         #Bounce against bricks
         brick_current_collides = pygame.sprite.spritecollide(ball,all_bricks,False)
         for brick in brick_current_collides:
+
             #Sound
-            mixer.music.stop()
-            mixer.music.load("Etrim.wav")
-            mixer.music.play()
+            if sound == 1: #if sound is enabled
+                mixer.music.stop()
+                mixer.music.load(E)
+                mixer.music.play()
 
             #Score
             score += 1
@@ -228,6 +245,4 @@ def main():
         pygame.display.flip() #update display
         clock.tick(60) #this code gives us our 60FPS.
 
-    #Out of Main Loop
-    pygame.quit() #close the window
     
