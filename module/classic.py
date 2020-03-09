@@ -15,6 +15,14 @@ def main():
     #Initialise Game Engine
     pygame.init()
 
+    #Initialize sound
+    mixer.init()
+    import os
+    current_path = os.getcwd() #Get default Path
+    c_note = current_path + "\\Ctrim.wav" #C Note
+    e_note = current_path + "\\Etrim.wav" #E Note
+
+
     #Set Colours
     red = [255,0,0]
     white = [255,255,255]

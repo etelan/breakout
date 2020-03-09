@@ -3,8 +3,11 @@ def main():
 
     #Import
     import pygame
-    import classic #This is our classic game
     from cursor import Cursor
+
+    #The Menu Elements
+    import classic #Classic game
+    
     
     pygame.init() #initialize
     clock = pygame.time.Clock() #init clock
