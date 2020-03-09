@@ -1,4 +1,4 @@
-#Splash screen
+#Menu System
 def main():
     import pygame # import
     pygame.init() #initialize
@@ -12,7 +12,7 @@ def main():
     width = 800
     height = 600
     screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("Breakout - Splash")
+    pygame.display.set_caption("Breakout - Menu")
 
     running = 1
 
@@ -22,19 +22,16 @@ def main():
         #Background
         screen.fill(black)
             
-        #Write my Splash
+        #Write my title
         font = pygame.font.Font(None, 74)
-        text = font.render("ETELAN", 1, white) # LINE ONE
-        screen.blit(text, (250,300))
+        text = font.render("MAIN MENU", 1, white) # LINE ONE
+        screen.blit(text, (250,50))
 
-        font = pygame.font.Font(None, 74)
-        text = font.render("GAMES", 1, white) # LINE TWO
-        screen.blit(text, (250,350))
-
-        font = pygame.font.Font(None, 20)
-        text = font.render("[PRESS SPACE TO CONTINUE]", 1, white) # LINE Three
-        screen.blit(text, (250,400))
-
+        
+        #Write my lines
+        font = pygame.font.Font(None, 35)
+        text = font.render("Classic Game", 1, white) # LINE ONE
+        screen.blit(text, (250,175))
         
         pygame.display.flip()#update
         clock.tick(60)
@@ -50,8 +47,9 @@ def main():
                 if event.key ==pygame.K_SPACE: #press L to also quit
                     running = False
                     #move on from splash screen
-
-print("Moving switftly on...")
 main()
+
+
+
     
 

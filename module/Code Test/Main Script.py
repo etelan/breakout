@@ -11,6 +11,7 @@ from brick import Brick
 #Splash screen
 splash.main()
 
+#Menu
 
 #Initialise Game Engine
 pygame.init()
@@ -144,7 +145,7 @@ while(running):
             pygame.display.flip()
             pygame.time.wait(3000)
             
-            running = false #quit the game
+            running = False #quit the game
         
     if ball.rect.y<5:
         ball.velocity[1] = -ball.velocity[1]
