@@ -1,3 +1,10 @@
+#FUNKIES SUPER FEATURES
+#Launch the ball <------- First
+#Power ups - more balls
+#Temp speed Increase
+#Random Ball Velocity
+
+
 def main():
 
 #IMPORTING
