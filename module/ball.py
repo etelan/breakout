@@ -1,5 +1,3 @@
-#fix ball when paddle moves
-
 #Imports
 import pygame
 from random import randint
