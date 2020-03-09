@@ -6,6 +6,8 @@ def main():
     from paddle import Paddle
     from ball import Ball
     from brick import Brick
+#!
+    from random import randint
 
 #FILE HANDLING
     #The Settings
@@ -23,7 +25,7 @@ def main():
         f = open("settings.txt", "w+")
         #Default Values
         f.write("[Paddle Speed]\n5" )
-        f.write("\n[Sound]\0" )
+        f.write("\n[Sound]\n0" )
         paddle_speed = int(5)
         sound = 0
         #Close the file
@@ -47,6 +49,8 @@ def main():
     black = [0,0,0]
     green = [0,255,0]
     orange = [255,165,0]
+    orange2 = [254, 92, 0]
+    yellow = [255,255,0]
 
     #score and lives
     score = 0
@@ -85,15 +89,28 @@ def main():
     all_bricks = pygame.sprite.Group()
 
     
-    #Lay Bricks
+    #Lay Bricks Variables
     rows = 8
     bricks = 7
     row_gap = 20
 
-    for i in range(rows): #rows
+    for p in range(rows): #rows
         row_gap += 40
         for i in range(bricks):
-            brick = Brick(red,80,30)
+
+            #Fancy Colours!
+            if p == 0 or p == 1:
+                colour = red
+            elif p == 2 or p == 3:
+                colour = orange
+            elif p == 4 or p == 5:
+                colour = green
+            elif p == 6 or p == 7:
+                colour = yellow
+                
+
+            #Lay the bricks
+            brick = Brick(colour,80,30)
             brick.rect.x = 60 + i*100 #this spaces them out along a line
             brick.rect.y = row_gap
             all_sprites_list.add(brick)
@@ -202,7 +219,7 @@ def main():
                 ball.kill()
 
                 #Update Screen Colour
-                screen.fill(orange) #Background Orange
+                screen.fill(orange2) #Background Orange
                 all_sprites_list.draw(screen)
 
                 #Draw Warning
@@ -302,16 +319,25 @@ def main():
 
                 #Win Conditions
                 if len(all_bricks)==0: #If there are no bricks left, you win
+
+                    #Clear the screen
+                    screen.fill(green)
+
+                    #Draw You Win!
                     font = pygame.font.Font(None, 65)
-                    text = font.render("YOU WIN", 1, white)
-                    screen.blit(text, (200,300))
-                    pygame.display.flip()
-                    pygame.time.wait(3000)
+                    text = font.render("YOU WIN", 1, black)
+                    screen.blit(text, (300,200))
+
+                    #Draw Score
+                    font = pygame.font.Font(None, 65)
+                    text = font.render("Score: " + str(score), 1, black)
+                    screen.blit(text, (300,300))
+                    
+                    pygame.display.update()
+                    pygame.time.delay(3000)
                     running = 0  #stop the game
                 
 #DRAWING
-
-
         
         #Drawing
         screen.fill(black) #Background
