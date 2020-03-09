@@ -3,9 +3,14 @@
 
 #Imports.
 import pygame
+import splash
 from paddle import Paddle
 from ball import Ball
 from brick import Brick
+
+#Splash screen
+splash.main()
+
 
 #Initialise Game Engine
 pygame.init()

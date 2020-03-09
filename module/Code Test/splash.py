@@ -24,12 +24,16 @@ def main():
             
         #Write my Splash
         font = pygame.font.Font(None, 74)
-        text = font.render("ETELAN", 1, white) # game over
+        text = font.render("ETELAN", 1, white) # LINE ONE
         screen.blit(text, (250,300))
 
         font = pygame.font.Font(None, 74)
-        text = font.render("GAMES", 1, white) # game over
+        text = font.render("GAMES", 1, white) # LINE TWO
         screen.blit(text, (250,350))
+
+        font = pygame.font.Font(None, 20)
+        text = font.render("[PRESS SPACE TO CONTINUE]", 1, white) # LINE Three
+        screen.blit(text, (250,400))
 
         
         pygame.display.flip()#update
@@ -41,9 +45,11 @@ def main():
             if event.type == pygame.QUIT: #press quit button
                 pygame.quit()
 
-        pygame.time.wait(2000)
-        running = 0
-        #move on from splash screen
+            #Key Down Event
+            elif event.type == pygame.KEYDOWN:
+                if event.key ==pygame.K_SPACE: #press L to also quit
+                    running = False
+                    #move on from splash screen
 
 
 
