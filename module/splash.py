@@ -12,9 +12,11 @@ def main():
     width = 800
     height = 600
     screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("Breakout - Splash")
 
-    running = 1
+    #Caption
+    pygame.display.set_caption("Breakout - Splash") 
+
+    running = 1 #How to break the loop
 
 
     while(running):

@@ -3,12 +3,8 @@ def main():
 
     #Import
     import pygame
-    import splash #Play our splash first
+    import classic #This is our classic game
     from cursor import Cursor
-
-    #Splash screen play
-    splash.main()
-
     
     pygame.init() #initialize
     clock = pygame.time.Clock() #init clock
@@ -87,7 +83,10 @@ def main():
                     elif cursor.rect.y == 222:
                         print("Not Done Yet")
                     elif cursor.rect.y == 182:
-                        running = False #Move it on
+                        classic.main() #Move it on to classic
+
+
+                        
                 
 
     
