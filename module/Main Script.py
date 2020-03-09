@@ -3,10 +3,16 @@
 
 #Imports.
 import pygame
+from pygame import mixer
 import menu
 from paddle import Paddle
 from ball import Ball
 from brick import Brick
+
+#Sound Test
+mixer.init()
+mixer.music.load("Ctrim.wav")
+mixer.music.play() 
 
 #Menu screen
 menu.main()
@@ -151,13 +157,25 @@ while(running):
         
     #Bounce against the paddles
     if pygame.sprite.collide_mask(ball, paddleA):
+        #Sound
+        mixer.music.load("Ctrim.wav")
+        mixer.music.play()
+
+        #Movement
         ball.rect.y -= 10
         ball.bounce()
 
     #Bounce against bricks
     brick_current_collides = pygame.sprite.spritecollide(ball,all_bricks,False)
     for brick in brick_current_collides:
+        #Sound
+        mixer.music.load("Etrim.wav")
+        mixer.music.play()
+
+        #Score
         score += 1
+        
+        #Mecahnics
         brick.kill()
         ball.bounce()
         if len(all_bricks)==0: #If there are no bricks left, you win

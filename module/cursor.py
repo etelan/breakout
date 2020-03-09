@@ -26,6 +26,10 @@ class Cursor(pygame.sprite.Sprite): #new classed based on sprite class
         self.rect = self.image.get_rect()
 
         
+
+        
+
+        
         
 
         
