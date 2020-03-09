@@ -21,12 +21,20 @@ class Ball(pygame.sprite.Sprite): #new classed based on sprite class
         pygame.draw.rect(self.image, colour, [0, 0, width, height]) #draws our rectangle ball
 
         #Because it has displacement, not just distance, we need velocity[x,y] with a random starting speed
-        self.velocity = [randint(-8,8), randint(-8,-1)]
+        self.velocity = [randint(-8,8), randint(-8,-3)]
+
+        
 
         #Grab dimensions of ball
         self.rect = self.image.get_rect()
 
     def update(self): #move the ball based on velocity
+        
+        #Make sure it doesn't get stuck.
+        if self.velocity[0] == 1 or self.velocity[0] == 0:
+            self.velocity[0] = randint(-8,8)
+            
+        
         self.rect.x += self.velocity[0]
         self.rect.y += self.velocity[1]
 

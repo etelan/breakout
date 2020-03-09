@@ -8,6 +8,7 @@ def main():
     #The Menu Elements
     import classic #Classic game
     import settings #settings screen
+    import funky
     
     
     pygame.init() #initialize
@@ -85,7 +86,7 @@ def main():
                     if cursor.rect.y == 262: # Settings
                         settings.main()
                     elif cursor.rect.y == 222:
-                        print("Not Done Yet")
+                        funky.main()
                     elif cursor.rect.y == 182:
                         classic.main() #Move it on to classic
 

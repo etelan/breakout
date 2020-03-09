@@ -24,9 +24,9 @@ def main():
     except FileNotFoundError: #If there is no file, then we will have to make one.
         f = open("settings.txt", "w+")
         #Default Values
-        f.write("[Paddle Speed]\n4" )
+        f.write("[Paddle Speed]\n5" )
         f.write("\n[Sound]\0" )
-        paddle_speed = int(4)
+        paddle_speed = int(5)
         sound = 0
         #Close the file
         f.close()
