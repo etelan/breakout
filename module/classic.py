@@ -160,6 +160,7 @@ def main():
         #Bounce against the paddles
         if pygame.sprite.collide_mask(ball, paddleA):
             #Sound
+            mixer.music.stop()
             mixer.music.load("Ctrim.wav")
             mixer.music.play()
 
@@ -171,6 +172,7 @@ def main():
         brick_current_collides = pygame.sprite.spritecollide(ball,all_bricks,False)
         for brick in brick_current_collides:
             #Sound
+            mixer.music.stop()
             mixer.music.load("Etrim.wav")
             mixer.music.play()
 
