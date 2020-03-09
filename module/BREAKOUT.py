@@ -1,14 +1,17 @@
+
+#import pygame and os
 from pygame import mixer
-import menu
-import splash
-import classic
+import os
 
 #Set Up Current Directory
-import os
 current_path = str(__file__).replace("\BREAKOUT.py", "")
 os.chdir(current_path)
 print(os.getcwd())
 print(current_path)
+
+#import modules
+import menu
+import splash
 
 #Sound Test
 mixer.init()
