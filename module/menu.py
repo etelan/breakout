@@ -59,6 +59,9 @@ def main():
 
         text = font.render("Game With Extras", 1, white) # LINE ONE
         screen.blit(text, (250,215))
+
+        text = font.render("Settings", 1, white) # LINE ONE
+        screen.blit(text, (250,255))
         
         pygame.display.flip()#update
         clock.tick(60)
@@ -72,16 +75,18 @@ def main():
             #Key Down Event
             elif event.type == pygame.KEYDOWN:
                 if event.key ==pygame.K_s: 
-                    if cursor.rect.y != 222: #Go Down
+                    if cursor.rect.y != 262: #Go Down
                         cursor.rect.y += 40
                 if event.key ==pygame.K_w: #Go Up
                     if cursor.rect.y != 182:
                         cursor.rect.y -= 40
                     
                 if event.key ==pygame.K_SPACE:
-                    if cursor.rect.y == 222:
+                    if cursor.rect.y == 262:
                         print("Not Done Yet")
-                    if cursor.rect.y == 182:
+                    elif cursor.rect.y == 222:
+                        print("Not Done Yet")
+                    elif cursor.rect.y == 182:
                         running = False #Move it on
                 
 
