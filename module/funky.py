@@ -218,6 +218,44 @@ def main():
 #!              Kill The Ball
                 ball.kill()
 
+                #Lower Life
+                lives -= 1
+                if lives <= 0: #If out of lives
+                    #update display for lives in the corner
+                    lives = 0
+                    print("Stop Running")
+
+                    #Paint Black
+                    screen.fill(black)
+
+                    #Game Over
+                    font = pygame.font.Font(None, 74) 
+                    text = font.render("YOU LOSE", 1, white)
+                    screen.blit(text, (250,300))
+
+                    #Points
+                    font = pygame.font.Font(None, 34)
+                    text = font.render("Points: " + str(score), 1, white)
+                    screen.blit(text, (250,400))
+
+                    #Lives Clear
+                    text = font.render("Lives 1", 1, black)
+                    screen.blit(text, (650, 10)) #draw lives
+
+                    #Lives (same font as before)
+                    text = font.render("Lives 0", 1, white)
+                    screen.blit(text, (650, 10)) #draw lives
+
+                    #Update screen
+                    pygame.display.update()
+
+                    #Pause for effect...
+                    pygame.time.wait(3000)
+
+                    #Back To Main Menu
+                    running = False
+                    break;
+
                 #Update Screen Colour
                 screen.fill(orange2) #Background Orange
                 all_sprites_list.draw(screen)
@@ -254,38 +292,6 @@ def main():
 
                 #go.
              
-                lives -= 1
-                if lives <= 0: #If out of lives
-                    #update display for lives in the corner
-                    lives = 0
-                    print("Stop Running")
-
-                    #Game Over
-                    font = pygame.font.Font(None, 74) 
-                    text = font.render("YOU LOSE", 1, white)
-                    screen.blit(text, (250,300))
-
-                    #Points
-                    font = pygame.font.Font(None, 34)
-                    text = font.render("Points: " + str(score), 1, white)
-                    screen.blit(text, (250,400))
-
-                    #Lives Clear
-                    text = font.render("Lives 1", 1, black)
-                    screen.blit(text, (650, 10)) #draw lives
-
-                    #Lives (same font as before)
-                    text = font.render("Lives 0", 1, white)
-                    screen.blit(text, (650, 10)) #draw lives
-
-                    #Update screen
-                    pygame.display.update()
-
-                    #Pause for effect...
-                    pygame.time.wait(3000)
-
-                    #Back To Main Menu
-                    running = False 
                 
             
                 
